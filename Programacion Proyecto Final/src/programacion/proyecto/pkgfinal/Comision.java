@@ -1,6 +1,7 @@
 package programacion.proyecto.pkgfinal;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -11,23 +12,19 @@ public abstract class Comision {
     private String codigo;
     private String titulo;
     private String descripcion;
-    private int fecha;
     private int precioBase;
     private boolean NSFW;
-    private String[] galeria;
-    private Artista artist;
+    private String artist;
 
     public Comision() {
     }
 
-    public Comision(String codigo, String titulo, String descripcion, int fecha, int precioBase, boolean NSFW, String[] galeria, Artista artist) {
+    public Comision(String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.fecha = fecha;
         this.precioBase = precioBase;
         this.NSFW = NSFW;
-        this.galeria = galeria;
         this.artist = artist;
     }
 
@@ -55,14 +52,6 @@ public abstract class Comision {
         this.descripcion = descripcion;
     }
 
-    public int getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(int fecha) {
-        this.fecha = fecha;
-    }
-
     public int getPrecioBase() {
         return precioBase;
     }
@@ -79,19 +68,12 @@ public abstract class Comision {
         this.NSFW = NSFW;
     }
 
-    public String[] getGaleria() {
-        return galeria;
-    }
 
-    public void setGaleria(String[] galeria) {
-        this.galeria = galeria;
-    }
-
-    public Artista getArtist() {
+    public String getArtist() {
         return artist;
     }
 
-    public void setArtist(Artista artist) {
+    public void setArtist(String artist) {
         this.artist = artist;
     }
 
@@ -105,9 +87,36 @@ public abstract class Comision {
 
     @Override
     public String toString() {
-        return codigo + ";" + titulo + ";" + descripcion + ";" + fecha + ";" + precioBase + ";=" + NSFW + ";" + Arrays.toString(galeria) + ";" + artist.toString();
+        return codigo + ";" + titulo + ";" + descripcion + ";" + precioBase + ";=" + NSFW + ";" + ";" + artist.toString();
     }
 
     public abstract String toStringCompleto();
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.codigo);
+        hash = 59 * hash + Objects.hashCode(this.titulo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comision other = (Comision) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 }

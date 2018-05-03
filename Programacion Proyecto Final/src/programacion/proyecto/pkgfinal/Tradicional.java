@@ -19,8 +19,8 @@ public class Tradicional extends Comision {
     public Tradicional() {
     }
 
-    public Tradicional(String tamano, int zonaEnvio, String codigo, String titulo, String descripcion, int fecha, int precioBase, boolean NSFW, String[] galeria, Artista artist) {
-        super(codigo, titulo, descripcion, fecha, precioBase, NSFW, galeria, artist);
+    public Tradicional(String tamano, int zonaEnvio, String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+        super(codigo, titulo, descripcion, precioBase, NSFW, artist);
         this.tamano = tamano;
         this.zonaEnvio = zonaEnvio;
     }
@@ -79,6 +79,6 @@ public class Tradicional extends Comision {
         } else {
             esNSFW = "No";
         }
-        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", año creación: " + super.getFecha() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Galeria de imágenes: " + Arrays.toString(super.getGaleria()) + ", Artista que dibuja: " + super.getArtist() + " Tamaño del papel: " + this.tamano + " Zona de envio número: " + this.zonaEnvio;
+        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Artista que dibuja: " + super.getArtist() + " Tamaño del papel: " + this.tamano + " Zona de envio número: " + this.zonaEnvio;
     }
 }

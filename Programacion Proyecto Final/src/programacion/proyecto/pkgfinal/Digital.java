@@ -19,8 +19,8 @@ public class Digital extends Comision {
     public Digital() {
     }
 
-    public Digital(boolean animado, boolean conCorrecciones, String codigo, String titulo, String descripcion, int fecha, int precioBase, boolean NSFW, String[] galeria, Artista artist) {
-        super(codigo, titulo, descripcion, fecha, precioBase, NSFW, galeria, artist);
+    public Digital(boolean animado, boolean conCorrecciones, String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+        super(codigo, titulo, descripcion, precioBase, NSFW, artist);
         this.animado = animado;
         this.conCorrecciones = conCorrecciones;
     }
@@ -77,6 +77,6 @@ public class Digital extends Comision {
         } else {
             esNSFW = "No";
         }
-        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", año creación: " + super.getFecha() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Galeria de imágenes: " + Arrays.toString(super.getGaleria()) + ", Artista que dibuja: " + super.getArtist() + " Animación digital: " + this.animado + " Con correcciones en el proceso: " + this.conCorrecciones;
+        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Artista que dibuja: " + super.getArtist() + " Animación digital: " + this.animado + " Con correcciones en el proceso: " + this.conCorrecciones;
     }
 }
