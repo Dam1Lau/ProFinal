@@ -22,9 +22,7 @@ public class Plataforma {
         artistas.add(new Cliente("Deku","Oneforall@gmail.com","8888"));
         artistas.add(new Cliente("Ochako","gravityfalls@gmail.com","9999"));
         artistas.add(new Cliente("Todoroki","chicken@gmail.com","9876"));
-        
-        
-        //comisiones.add(new Comision("C001","Retrato","Retrato de un personaje o persona hasta los hombros.",2018,15,false,{"abcd.jpg","def.jpg"}, ));
+
     }
 
     public ArrayList<Comision> getComisiones() {
