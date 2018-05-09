@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package programacion.proyecto.pkgfinal;
+package Clases;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -14,14 +14,14 @@ import java.util.TreeSet;
  */
 public class Plataforma {
     ArrayList <Comision> comisiones = new ArrayList();
-    TreeSet <Cliente> artistas = new TreeSet();
+    TreeSet <Cliente> clientes = new TreeSet();
 
     public Plataforma() {
-        artistas.add(new Cliente("Froggy","fro@gmail.com","1234"));
-        artistas.add(new Cliente("Bakugo","boom@gmail.com","4567"));
-        artistas.add(new Cliente("Deku","Oneforall@gmail.com","8888"));
-        artistas.add(new Cliente("Ochako","gravityfalls@gmail.com","9999"));
-        artistas.add(new Cliente("Todoroki","chicken@gmail.com","9876"));
+        clientes.add(new Cliente("Froggy","fro@gmail.com","1234"));
+        clientes.add(new Cliente("Bakugo","boom@gmail.com","4567"));
+        clientes.add(new Cliente("Deku","Oneforall@gmail.com","8888"));
+        clientes.add(new Cliente("Ochako","gravityfalls@gmail.com","9999"));
+        clientes.add(new Cliente("Todoroki","chicken@gmail.com","9876"));
 
     }
 
@@ -31,6 +31,14 @@ public class Plataforma {
 
     public void setComisiones(ArrayList<Comision> comisiones) {
         this.comisiones = comisiones;
+    }
+
+    public TreeSet<Cliente> getclientes() {
+        return clientes;
+    }
+
+    public void setclientes(TreeSet<Cliente> clientes) {
+        this.clientes = clientes;
     }
     
     

@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package programacion.proyecto.pkgfinal;
+package Utilidades;
 
+import Clases.Comision;
+import Clases.Digital;
+import Clases.Tradicional;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

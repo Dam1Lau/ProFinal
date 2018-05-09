@@ -1,4 +1,4 @@
-package programacion.proyecto.pkgfinal;
+package Clases;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -96,7 +96,6 @@ public abstract class Comision {
     public int hashCode() {
         int hash = 7;
         hash = 59 * hash + Objects.hashCode(this.codigo);
-        hash = 59 * hash + Objects.hashCode(this.titulo);
         return hash;
     }
 

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package programacion.proyecto.pkgfinal;
+package Utilidades;
 
+import Clases.Cliente;
+import Clases.Comision;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
