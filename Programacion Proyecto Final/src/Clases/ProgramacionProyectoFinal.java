@@ -16,6 +16,13 @@ public class ProgramacionProyectoFinal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        
+        
+        /*
+        En clientes o comisiones cada vez que se cree uno, podria ser su id por ejemplo
+        un tring al que añades un numero que va siendo diferente segun lo cambies.
+        */
     }
     
 }

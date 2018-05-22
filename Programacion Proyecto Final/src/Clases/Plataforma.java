@@ -15,6 +15,7 @@ import java.util.TreeSet;
 public class Plataforma {
     ArrayList <Comision> comisiones = new ArrayList();
     TreeSet <Cliente> clientes = new TreeSet();
+    ArrayList <Pedido> pedidos = new ArrayList();
 
     public Plataforma() {
         clientes.add(new Cliente("Froggy","fro@gmail.com","1234"));
@@ -33,15 +34,106 @@ public class Plataforma {
         this.comisiones = comisiones;
     }
 
-    public TreeSet<Cliente> getclientes() {
+    public TreeSet<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setclientes(TreeSet<Cliente> clientes) {
+    public void setClientes(TreeSet<Cliente> clientes) {
         this.clientes = clientes;
     }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public void agregarComision(Comision comi){
     
+    }
     
+    public  void quitarComision(String codigo){
+    
+    }
+    
+    public void editarComision(String codigo) {
+    
+    }
+    
+    public Comision obtenerComision(String codigo){
+        Comision com = null;
+        return com;
+    }
+    
+    public void agregarCliente(Cliente clie){
+    
+    }
+    
+    public  void quitarCliente(String codigo){
+    
+    }
+    
+    public void editarCliente(String codigo) {
+    
+    }
+    
+    public Cliente obtenerCliente(String codigo){
+        Cliente cli = null;
+        return cli;
+    }
+    
+    public void agregarPedido(Pedido ped){
+    
+    }
+    
+    public  void quitarPedido(String codigo){
+    
+    }
+    
+    public void editarPedido(String codigo) {
+    
+    }
+    
+    public Cliente obtenerPedido(String codigo){
+        Cliente ped = null;
+        return ped;
+    }
+    
+    public void listarPorPrecio(double precio){
+    
+    }
+    
+    public void listarPrecioMenor(double precio){
+    
+    }
+    
+    public void listarPorArtista(String nombre){
+    
+    }
+    
+    public void listarPorTitulo(String titulo){
+    
+    }
+    
+    public void listarPedidos(ArrayList<Pedido> pedidos){
+    
+    }
+    
+    public void listarComisiones(ArrayList<Comision> comisiones){
+    
+    }
+    
+    public void listarClientes(TreeSet<Cliente> clientes){
+    
+    }
+    
+    public double calcularTotalGanado(ArrayList<Pedido> pedidos){
+    double total = 0;
+    
+    return total;
+    }
     
     
 }

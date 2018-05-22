@@ -5,17 +5,19 @@
  */
 package Clases;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Laura
  */
-public class Cliente {
+public class Cliente  implements Serializable{
     private String nickname;
     private String email;
     private String password;
 
+    
     public Cliente() {
     }
 
