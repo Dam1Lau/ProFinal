@@ -5,13 +5,15 @@
  */
 package Clases;
 
+import Utilidades.UtilidadesFichero;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
  * Clase que contiene las lstas de comisiones, clientes y pedidos que se tienen
- * registrados en los ficheros o la plataforma, junto con los métodos que permiten
- * realizar acciones o gestiones sobre los mismos. 
+ * registrados en los ficheros o la plataforma, junto con los métodos que
+ * permiten realizar acciones o gestiones sobre los mismos.
+ *
  * @author Laura
  */
 public class Plataforma {
@@ -20,13 +22,21 @@ public class Plataforma {
     TreeSet<Cliente> clientes = new TreeSet();
     ArrayList<Pedido> pedidos = new ArrayList();
 
+    /**
+     * Contructor de la clase Plataforma. Al iniciarse la plataforma se debe
+     * cargar en memoria el contenido de los ficheros de datos para poder
+     * realizar acciones sobre ellos.
+     */
     public Plataforma() {
-        clientes.add(new Cliente("Froggy", "fro@gmail.com", "1234"));
-        clientes.add(new Cliente("Bakugo", "boom@gmail.com", "4567"));
-        clientes.add(new Cliente("Deku", "Oneforall@gmail.com", "8888"));
-        clientes.add(new Cliente("Ochako", "gravityfalls@gmail.com", "9999"));
-        clientes.add(new Cliente("Todoroki", "chicken@gmail.com", "9876"));
+        clientes = Utilidades.UtilidadesFichero.cargarClientes();
+        comisiones = Utilidades.UtilidadesFichero.cargarComisiones();
+        pedidos = Utilidades.UtilidadesFichero.cargarPedidos();
 
+//        clientes.add(new Cliente("Fro", "fro@gmail.com", "1234"));
+//        clientes.add(new Cliente("Bak", "boom@gmail.com", "4567"));
+//        clientes.add(new Cliente("Dek", "Oneforall@gmail.com", "8888"));
+//        clientes.add(new Cliente("Och", "gravityfalls@gmail.com", "9999"));
+//        clientes.add(new Cliente("Todo", "chicken@gmail.com", "9876"));
     }
 
     /**
@@ -40,22 +50,50 @@ public class Plataforma {
         return comisiones;
     }
 
+    /**
+     * Método para establecer el valor del ArrayList de objetos de tipo
+     * Comision.
+     *
+     * @param comisiones ArrayList de objetos de tipo Comision.
+     */
     public void setComisiones(ArrayList<Comision> comisiones) {
         this.comisiones = comisiones;
     }
 
+    /**
+     * Método para obtener el TreeSet de objetos de la clase Cliente almacenados
+     * en la plataforma.
+     *
+     * @return TreeSet de Cliente. TreeSet con los objetos de tipo Cliente.
+     */
     public TreeSet<Cliente> getClientes() {
         return clientes;
     }
 
+    /**
+     * Método para establecer el valor del TreeSet de objetos de tipo Cliente.
+     *
+     * @param clientes ArrayList de objetos de tipo Cliente.
+     */
     public void setClientes(TreeSet<Cliente> clientes) {
         this.clientes = clientes;
     }
 
+    /**
+     * Método que obtiene el ArrayList de objetos de clase Pedido almacenados en
+     * la plataforma.
+     *
+     * @return ArrayList de Pedido. Arraylist con los objetos de tipo Pedido.
+     */
     public ArrayList<Pedido> getPedidos() {
         return pedidos;
     }
 
+    /**
+     * Método para establecer el valor del ArrayList de objetos de tipo Pedido.
+     *
+     * @param pedidos ArrayList de objetos de tipo Pedido.
+     */
     public void setPedidos(ArrayList<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
@@ -112,15 +150,37 @@ public class Plataforma {
         return com;
     }
 
+    /**
+     * Método que agrega un nuevo cliente a la plataforma. Añade un objeto de
+     * tipo Cliente al TreeSet de clientes.
+     *
+     * @param clie Objeto de tipo Cliente.
+     */
     public void agregarCliente(Cliente clie) {
 
     }
 
-    public void quitarCliente(String codigo) {
+    /**
+     * Método que busca un cliente determinado por su nickname en el TreeSet de
+     * clientes que estan registrados en la plataforma y lo elimina de dicho
+     * ArrayList.
+     *
+     * @param nombre tipo String. Nickname o nombre identificador del cliente a
+     * eliminar.
+     */
+    public void quitarCliente(String nombre) {
 
     }
 
-    public void editarCliente(String codigo) {
+    /**
+     * Método que busca un cliente determinado por su nickname en el TreeSet de
+     * clientes que estan registrados en la plataforma y permite modificar sus
+     * atributos.
+     *
+     * @param nombre tipo String. Nickname o nombre identificador del cliente a
+     * modificar.
+     */
+    public void editarCliente(String nombre) {
 
     }
 
@@ -140,17 +200,33 @@ public class Plataforma {
     }
 
     /**
+     * Método que agrega un nuevo cpedido a la plataforma. Añade un objeto de
+     * tipo Cliente al ArrayList de pedidos.
      *
-     * @param ped
+     * @param ped Objeto de tipo Pedido.
      */
     public void agregarPedido(Pedido ped) {
 
     }
 
+    /**
+     * Método que busca un pedido determinado por su código en el ArrayList de
+     * pedidos que estan registrados en la plataforma y lo elimina de dicho
+     * ArrayList. Al eliminarse se graban los cambios en fichero.
+     *
+     * @param codigo tipo String. Código identificador del pedido a eliminar.
+     */
     public void quitarPedido(String codigo) {
 
     }
 
+    /**
+     * Método que busca un pedido determinado por su código en el ArrayList de
+     * pedidos que estan registrados en la plataforma y permite cambiar sus
+     * atributos. Al editarse se graban los cambios en fichero.
+     *
+     * @param codigo tipo String. Código identificador del pedido a eliminar.
+     */
     public void editarPedido(String codigo) {
 
     }

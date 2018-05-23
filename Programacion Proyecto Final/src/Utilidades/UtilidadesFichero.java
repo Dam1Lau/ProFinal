@@ -44,7 +44,7 @@ public class UtilidadesFichero {
      * ArrayList con todas las comisiones que hay registradas en la plataforma
      * en el momento del grabado de datos en el fichero.
      */
-    private void grabarComisiones(ArrayList<Comision> comisiones) {
+    public static void grabarComisiones(ArrayList<Comision> comisiones) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosComisiones)));
             for (int i = 0; i < comisiones.size(); i++) {
@@ -63,11 +63,11 @@ public class UtilidadesFichero {
      * Método que graba los datos de los clientes almacenados en la plataforma
      * en un fichero de datos.
      *
-     * @param comisiones ArrayList compuesto de instancias de clase Cliente.
+     * @param clientes ArrayList compuesto de instancias de clase Cliente.
      * ArrayList con todas los clientes que hay registradas en la plataforma en
      * el momento del grabado de datos en el fichero.
      */
-    private void grabarClientes(TreeSet<Cliente> clientes) {
+    public static void grabarClientes(TreeSet<Cliente> clientes) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosClientes)));
             Iterator<Cliente> it = clientes.iterator();
@@ -87,11 +87,11 @@ public class UtilidadesFichero {
      * Método que graba los datos de los pedidos almacenadas en la plataforma en
      * un fichero de datos.
      *
-     * @param comisiones ArrayList compuesto de instancias de clase Pedido.
+     * @param pedidos ArrayList compuesto de instancias de clase Pedido.
      * ArrayList con todos los pedidos que hay registradas en la plataforma en
      * el momento del grabado de datos en el fichero.
      */
-    private void grabarPedido(ArrayList<Pedido> pedidos) {
+    public static void grabarPedido(ArrayList<Pedido> pedidos) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosPedidos)));
             for (int i = 0; i < pedidos.size(); i++) {
@@ -113,7 +113,7 @@ public class UtilidadesFichero {
      *
      * @return ArrayList compuesto de instancias de la clase Comision.
      */
-    private ArrayList<Comision> cargarComisiones() {
+    public static ArrayList<Comision> cargarComisiones() {
         ArrayList<Comision> aux = new ArrayList();
         boolean finalFichero = false;
         try {
@@ -145,15 +145,15 @@ public class UtilidadesFichero {
      *
      * @return ArrayList compuesto de instancias de la clase Cliente.
      */
-    private TreeSet<Comision> cargarClientes() {
-        TreeSet<Comision> aux = new TreeSet();
+    public static TreeSet<Cliente> cargarClientes() {
+        TreeSet<Cliente> aux = new TreeSet();
         boolean finalFichero = false;
         try {
             ObjectInputStream ou = new ObjectInputStream(new FileInputStream(new File(datosComisiones)));
             try {
                 while (finalFichero == false) {
                     try {
-                        aux.add((Comision) ou.readObject());
+                        aux.add((Cliente) ou.readObject());
                     } catch (EOFException e) {
                         finalFichero = true;
                     }
@@ -177,7 +177,7 @@ public class UtilidadesFichero {
      *
      * @return ArrayList compuesto de instancias de la clase Pedido.
      */
-    private ArrayList<Pedido> cargarPedidos() {
+    public static ArrayList<Pedido> cargarPedidos() {
         ArrayList<Pedido> aux = new ArrayList();
         boolean finalFichero = false;
         try {
