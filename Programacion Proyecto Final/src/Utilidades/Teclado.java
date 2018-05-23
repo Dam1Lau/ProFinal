@@ -12,11 +12,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
+ * Clase teclado con las utilidades necesarias para pedir al usuario una serie
+ * de datos por teclado. Aglutina las clases que requieran de preguntar al
+ * usuario algun tipo de dato, pregunta, menú de creación...
  *
  * @author Laura
  */
 public class Teclado {
 
+    /**
+     * Método que obtiene de teclado un número y comprueba que aquello que se
+     * introduce sea efectivamente un dígito correcto y no un símbolo, letra u
+     * otro caracter.
+     *
+     * @return int, número entero.
+     */
     public static int pedirNumero() {
         int numero = 0;
         boolean esNumero = false;
@@ -32,6 +42,13 @@ public class Teclado {
         return numero;
     }
 
+    /**
+     * Método que obtiene de teclado un número con decimales y comprueba que
+     * aquello que se introduce sea efectivamente un dígito correcto y no un
+     * símbolo, letra u otro caracter.
+     *
+     * @return double, número con decimales.
+     */
     public static int pedirPrecio() {
         int precio = 0;
         boolean esCorrecta = false;
@@ -50,6 +67,13 @@ public class Teclado {
         return precio;
     }
 
+    /**
+     * Método que pide al usuario que responda si o no ante una pregunta que se le
+     * ha debido plantear anteriormente a la llamada del mismo y que retornará un
+     * booleando según la opción elegida.
+     *
+     * @return boolean. True si elige 1(Si), false si elige 2(No).
+     */
     public static boolean pedirBoolean() {
         boolean opcion;
         System.out.println("1. Si  2. No");
@@ -64,7 +88,6 @@ public class Teclado {
         }
         return opcion;
     }
-
 
     public static Comision crearComision() {
         Scanner lector = new Scanner(System.in);

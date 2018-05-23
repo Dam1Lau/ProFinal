@@ -31,10 +31,9 @@ public abstract class Comision implements Serializable {
     }
 
     /**
-     * Constructor de la clase comisión. Crea una instancia de la clase pidiendo
-     * mediante la introducción de todos los atributos a través de los
-     * parámetros de entrada del constructor. Los parámetros necesarios son los
-     * siguientes:
+     * Constructor de la clase comisión. Crea una instancia de la clase mediante
+     * la introducción de todos sus atributos a través de los parámetros de
+     * entrada del constructor. Los parámetros necesarios son los siguientes:
      *
      * @param codigo tipo String. Código único, irrepetible que identifica a la
      * comsión.
@@ -42,7 +41,7 @@ public abstract class Comision implements Serializable {
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión
      * @param precioBase tipo int. Precio base para una comsión general. Se
-     * elige trabajar con int para que sea sencillo obervar el precio base de un
+     * elige trabajar con int para que sea sencillo observar el precio base de un
      * solo vistazo.
      * @param NSFW tipo booleano. NSFW significa Not Safe For Work e identifica
      * si un trabajo digital, ilustración u obra tiene contenido adulto o no.
@@ -172,45 +171,54 @@ public abstract class Comision implements Serializable {
     }
 
     /**
-     * Método utilizado para establecer el valor del atributo artist de la
-     * clase Comisión.
+     * Método utilizado para establecer el valor del atributo artist de la clase
+     * Comisión.
      *
-     * @param artist precio base de la comisión, tipo String. Precio base que
-     * se quiere establecer en el atributo artist de la clase Comsión.
+     * @param artist precio base de la comisión, tipo String. Precio base que se
+     * quiere establecer en el atributo artist de la clase Comsión.
      */
     public void setArtist(String artist) {
         this.artist = artist;
     }
 
     /**
-     * Método abstracto que delega el cálculo del precio de la comisión a las sublclases que
-     * heredan de la clase comisión. El precio final dependerá de los atributos de las
-     * subclases.
-     * 
+     * Método abstracto que delega el cálculo del precio de la comisión a las
+     * sublclases que heredan de la clase comisión. El precio final dependerá de
+     * los atributos de las subclases.
+     *
      * @return double - Precio total de la comision a realizar, dependiendo de
      * ciertos factores que varían según la subclase o tipo del que se trate
      * cada comisión.
      */
     public abstract double calcularPrecioTotal();
-/**
- * Método que genera un String con los atributos de la clase Comsión, separando cada
- * uno de ellos por un punto y coma.
- * @return String con los datos de los atributos clase Comisión.
- */
+
+    /**
+     * Método que genera un String con los atributos de la clase Comsión,
+     * separando cada uno de ellos por un punto y coma.
+     *
+     * @return String con los datos de los atributos clase Comisión.
+     */
     @Override
     public String toString() {
-        return codigo + ";" + titulo + ";" + descripcion + ";" + precioBase + ";=" + NSFW + ";" + ";" + artist.toString();
+        return codigo + ";" + titulo + ";" + descripcion + ";" + precioBase + ";=" + NSFW + ";" + artist.toString();
     }
-/**
- * Método abstracto que delega en las subclases que heredan de la clase comisión el generar
- * un String con el valor de sus atributos tras una frase o palabra que identifique a cada uno de ellos.
- * @return 
- */
+
+    /**
+     * Método abstracto que delega en las subclases que heredan de la clase
+     * comisión el generar un String con el valor de sus atributos tras una
+     * frase o palabra que identifique a cada uno de ellos.
+     *
+     * @return String con los atributos de la subclase que desarrolla el método.
+     */
     public abstract String toStringCompleto();
-/**
- * Método que genera un código único para cada instancia de la clase Comisión.
- * @return int. Devuelve un número 
- */
+
+    /**
+     * Método que genera un código hash para cada instancia de la clase
+     * Comisión.
+     *
+     * @return int. Devuelve un número generado usando el atributo código de la
+     * clase Comisión.
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -218,6 +226,14 @@ public abstract class Comision implements Serializable {
         return hash;
     }
 
+    /**
+     * Método equals para comparar si dos objetos son iguales comparando sus
+     * códigos de identificación.
+     *
+     * @param obj objeto a comparar por su atributo código.
+     * @return True si ambos objetos comparados son iguales, false si no son
+     * iguales.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
