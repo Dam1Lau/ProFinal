@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
- * Clase que contiene las lstas de comisiones, clientes y pedidos que se tienen
+ * Clase que contiene las listas de comisiones, clientes y pedidos que se tienen
  * registrados en los ficheros o la plataforma, junto con los métodos que
  * permiten realizar acciones o gestiones sobre los mismos.
  *
@@ -143,7 +143,7 @@ public class Plataforma {
 
     /**
      * Método que busca una comisión determinada por su código en el ArrayList
-     * de comisiones que estan registradas en la plataforma y la elimina de
+     * de comisiones que están registradas en la plataforma y la elimina de
      * dicho ArrayList.
      *
      * @param codigo tipo String. Código identificador de la comisión a
@@ -166,7 +166,7 @@ public class Plataforma {
 
     /**
      * Método que busca una comisión determinada por su código en el ArrayList
-     * de comisiones que estan registradas en la plataforma y permite editar
+     * de comisiones que están registradas en la plataforma y permite editar
      * algunos de sus atributos. * dicho ArrayList.
      *
      * @param codigo tipo String. Código identificador de la comisión a
@@ -182,7 +182,7 @@ public class Plataforma {
                 comisiones.get(i).setDescripcion(Utilidades.Teclado.pedirString());
                 System.out.println("Introduce el precio base:");
                 comisiones.get(i).setPrecioBase(Utilidades.Teclado.pedirPrecio());
-                System.out.println("¿La comision tiene contenido NSFW?");
+                System.out.println("¿La comisión tiene contenido NSFW?");
                 comisiones.get(i).setNSFW(Utilidades.Teclado.pedirBoolean());
                 System.out.println("Introduce el nombre del artista que la realiza:");
                 comisiones.get(i).setArtist(Utilidades.Teclado.pedirString());
@@ -270,7 +270,7 @@ public class Plataforma {
     }
 
     /**
-     * Método que agrega un nuevo cpedido a la plataforma. Añade un objeto de
+     * Método que agrega un nuevo pedido a la plataforma. Añade un objeto de
      * tipo Cliente al ArrayList de pedidos.
      *
      * @param ped Objeto de tipo Pedido.
@@ -281,7 +281,7 @@ public class Plataforma {
 
     /**
      * Método que busca un pedido determinado por su código en el ArrayList de
-     * pedidos que estan registrados en la plataforma y lo elimina de dicho
+     * pedidos que están registrados en la plataforma y lo elimina de dicho
      * ArrayList. Al eliminarse se graban los cambios en fichero.
      *
      * @param codigo tipo String. Código identificador del pedido a eliminar.
@@ -292,7 +292,7 @@ public class Plataforma {
 
     /**
      * Método que busca un pedido determinado por su código en el ArrayList de
-     * pedidos que estan registrados en la plataforma y permite cambiar sus
+     * pedidos que están registrados en la plataforma y permite cambiar sus
      * atributos. Al editarse se graban los cambios en fichero.
      *
      * @param codigo tipo String. Código identificador del pedido a eliminar.
@@ -406,7 +406,7 @@ public class Plataforma {
      * en la propia clase que contiene el ArrayList. En caso de trasladar el
      * método a otra clase sí es necesario el parámetro.
      *
-     * @param clientes
+     * @param clientes TreeSet compuesto de objetos de tipo Cliente.
      */
     public void listarClientes(TreeSet<Cliente> clientes) {
 

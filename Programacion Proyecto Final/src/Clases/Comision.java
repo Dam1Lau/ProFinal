@@ -10,7 +10,7 @@ import java.util.Objects;
  * <br>
  * Contiene una serie de atributos que serán comunes a las clases que heredan de
  * ella. Además contiene un método abstracto cuyo cálculo será delegado a las
- * subclases que herdan de el.
+ * subclases que heredan de él.
  *
  * @author Laura
  */
@@ -26,7 +26,7 @@ public abstract class Comision implements Serializable {
     public static int numeroCreadas;
 
     /**
-     * Constructor vacio de la clase comision. Crea una instancia inicializando
+     * Constructor vacío de la clase comisión. Crea una instancia inicializando
      * los atributos de la clase al valor por defecto.
      */
     public Comision() {
@@ -41,14 +41,14 @@ public abstract class Comision implements Serializable {
      * @param titulo tipo String. Título identificativo de la comisión. Es
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión
-     * @param precioBase tipo int. Precio base para una comsión general. Se
+     * @param precioBase tipo int. Precio base para una comisión general. Se
      * elige trabajar con int para que sea sencillo observar el precio base de un
      * solo vistazo.
      * @param NSFW tipo booleano. NSFW significa Not Safe For Work e identifica
      * si un trabajo digital, ilustración u obra tiene contenido adulto o no.
-     * <br>True: Tiene algun tipo de contenido adulto. <br>False: No tiene
+     * <br>True: Tiene algún tipo de contenido adulto. <br>False: No tiene
      * contenido adulto.
-     * @param artist tipo String. Nombre del artista que ha realizado la comsión
+     * @param artist tipo String. Nombre del artista que ha realizado la comisión
      * u obra.
      */
     public Comision(String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
@@ -131,7 +131,7 @@ public abstract class Comision implements Serializable {
      * clase Comisión.
      *
      * @param precioBase precio base de la comisión, tipo int. Precio base que
-     * se quiere establecer en el atributo precioBase de la clase Comsión.
+     * se quiere establecer en el atributo precioBase de la clase Comisión.
      */
     public void setPrecioBase(int precioBase) {
         this.precioBase = precioBase;
@@ -153,7 +153,7 @@ public abstract class Comision implements Serializable {
      * Comisión.
      *
      * @param NSFW precio base de la comisión, tipo boolean. Booleano que indica
-     * si hay algun tipo de contenido adulto en la obra de arte/comsión.<br>
+     * si hay algun tipo de contenido adulto en la obra de arte/comisión.<br>
      * True si tiene ese tipo de contenido, false si no lo tiene.
      */
     public void setNSFW(boolean NSFW) {
@@ -176,7 +176,7 @@ public abstract class Comision implements Serializable {
      * Comisión.
      *
      * @param artist precio base de la comisión, tipo String. Precio base que se
-     * quiere establecer en el atributo artist de la clase Comsión.
+     * quiere establecer en el atributo artist de la clase Comisión.
      */
     public void setArtist(String artist) {
         this.artist = artist;
@@ -184,7 +184,7 @@ public abstract class Comision implements Serializable {
 
     /**
      * Método abstracto que delega el cálculo del precio de la comisión a las
-     * sublclases que heredan de la clase comisión. El precio final dependerá de
+     * subclases que heredan de la clase comisión. El precio final dependerá de
      * los atributos de las subclases.
      *
      * @return double - Precio total de la comision a realizar, dependiendo de
@@ -194,7 +194,7 @@ public abstract class Comision implements Serializable {
     public abstract double calcularPrecioTotal();
 
     /**
-     * Método que genera un String con los atributos de la clase Comsión,
+     * Método que genera un String con los atributos de la clase Comisión,
      * separando cada uno de ellos por un punto y coma.
      *
      * @return String con los datos de los atributos clase Comisión.

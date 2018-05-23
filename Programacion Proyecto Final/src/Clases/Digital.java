@@ -18,8 +18,10 @@ public class Digital extends Comision {
     private boolean conCorrecciones;
 
     /**
-     * Constructor vacio de la clase Digital. Crea una instancia inicializando
-     * los atributos de la clase al valor por defecto.
+     * Constructor vacío de la clase Digital. Crea una instancia inicializando
+     * los atributos de la clase al valor por defecto y dando un identificador
+     * propio a cada nueva comisión digital uniendo el nombre de la clase y un número
+     * que aumenta cada vez que se crea una instancia Comision o sus derivadas.
      */
     public Digital() {
         this.codigo = this.getClass().getSimpleName() + numeroCreadas;
@@ -37,15 +39,15 @@ public class Digital extends Comision {
      * @param titulo tipo String. Título identificativo de la comisión. Es
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión
-     * @param precioBase tipo int. Precio base para una comsión general. Se
+     * @param precioBase tipo int. Precio base para una comisión general. Se
      * elige trabajar con int para que sea sencillo observar el precio base de
      * un solo vistazo.
      * @param NSFW tipo booleano. NSFW significa Not Safe For Work e identifica
      * si un trabajo digital, ilustración u obra tiene contenido adulto o no.
      *
-     * <br>True: Tiene algun tipo de contenido adulto. <br>False: No tiene
+     * <br>True: Tiene algún tipo de contenido adulto. <br>False: No tiene
      * contenido adulto.
-     * @param artist tipo String. Nombre del artista que ha realizado la comsión
+     * @param artist tipo String. Nombre del artista que ha realizado la comisión
      * u obra.
      */
     public Digital(boolean animado, boolean conCorrecciones, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
@@ -110,7 +112,7 @@ public class Digital extends Comision {
      * el precio base.
      *
      * @return double. Total a pagar por la comisión/dibujo dependiendo de sus
-     * caracteristicas.
+     * características.
      */
     @Override
     public double calcularPrecioTotal() {
@@ -126,7 +128,7 @@ public class Digital extends Comision {
     }
 
     /**
-     * Método que genera un String con los atributos propios de la clase Comsión
+     * Método que genera un String con los atributos propios de la clase Comisión
      * Digital, separando cada uno de ellos por un punto y coma.
      *
      * @return String con los datos de los atributos propios de la clase
@@ -138,7 +140,7 @@ public class Digital extends Comision {
     }
 
     /**
-     * Método que sobreescribe al método toStringCompleto de la clase Comisión
+     * Método que sobrescribe al método toStringCompleto de la clase Comisión
      * de la que lo hereda. Genera un String con el valor de sus atributos tras
      * una frase o palabra que identifique a cada uno de ellos.
      *

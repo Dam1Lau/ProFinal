@@ -22,11 +22,11 @@ public class Cliente implements Serializable {
     
 
     /**
-     * Constructor vacio de la clase cliente. Crea una instancia inicializando
+     * Constructor vacío de la clase cliente. Crea una instancia inicializando
      * los atributos de la clase al valor por defecto.
      */
     public Cliente() {
-        
+
     }
 
     /**
@@ -42,7 +42,7 @@ public class Cliente implements Serializable {
      * datos. Puede contener números y letras.
      */
     public Cliente(String nickname, String email, String password) {
-        this.nickname = nickname;  //Debe ser único y no repetirse en ningún otro cliente.
+        this.nickname = nickname;  
         this.email = email;
         this.password = password;
     }
@@ -73,7 +73,7 @@ public class Cliente implements Serializable {
      * Método utilizado para establecer el valor del atributo email de la clase
      * Cliente.
      *
-     * @param email del cliente, tipo String. Debe contener el formato correcto
+     * @param email correo electrónico del cliente, tipo String. Debe contener el formato correcto
      * para un email (@ y dominio).
      */
     public void setEmail(String email) {
@@ -95,7 +95,7 @@ public class Cliente implements Serializable {
      * Método utilizado para establecer el valor del atributo contraseña de la
      * clase Cliente.
      *
-     * @param password del cliente, tipo String. Puede contener números y
+     * @param password contraseña del cliente, tipo String. Puede contener números y
      * letras.
      */
     public void setPassword(String password) {
@@ -127,7 +127,7 @@ public class Cliente implements Serializable {
     /**
      * Método que genera un código hash para cada instancia de la clase Cliente.
      *
-     * @return int. Devuelve un número generado usando el atributo nickname de
+     * @return número entero. Devuelve un número generado usando el atributo nickname de
      * la clase Cliente.
      */
     @Override
@@ -139,7 +139,7 @@ public class Cliente implements Serializable {
 
     /**
      * Método equals para comparar si dos objetos son iguales comparando sus
-     * atributos nickname.
+     * atributos nickname. Sobreescibe al método equal de Object.
      *
      * @param obj objeto a comparar por su atributo nickname.
      * @return True si ambos objetos comparados son iguales, false si no son

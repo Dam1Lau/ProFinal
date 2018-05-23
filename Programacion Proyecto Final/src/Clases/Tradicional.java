@@ -84,8 +84,8 @@ public class Tradicional extends Comision {
      * clase Tradicional.
      *
      * @return atributo zonaEnvio de la Tradicional, tipo String. Tomará en
-     * general los valores 1 si es Unión Europea, otro valor > 0 si es envio
-     * mundial.
+     * general los valores 1 si es Unión Europea, otro valor mayor a 1 si es envio
+     * internacional.
      */
     public int getZonaEnvio() {
         return zonaEnvio;
@@ -96,7 +96,7 @@ public class Tradicional extends Comision {
      * la clase Tradicional
      *
      * @param zonaEnvio int con el tipo de zona de envío. Tomará en general los
-     * valores 1 si es Unión Europea, otro valor > 0 si es envio mundial.
+     * valores 1 si es Unión Europea, otro valor mayor a 1 si es envio internacional.
      */
     public void setZonaEnvio(int zonaEnvio) {
         this.zonaEnvio = zonaEnvio;
