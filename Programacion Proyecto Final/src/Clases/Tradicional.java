@@ -23,6 +23,7 @@ public class Tradicional extends Comision {
      * inicializando los atributos de la clase al valor por defecto.
      */
     public Tradicional() {
+        this.codigo = this.getClass().getSimpleName() + numeroCreadas;
     }
 
     /**
@@ -36,8 +37,6 @@ public class Tradicional extends Comision {
      * @param zonaEnvio tipo int. Zona a la que se puede envíar el producto.
      * Zona 1 se considera la Unión Europea, cualuiqe otra zona es envío
      * mundial.
-     * @param codigo tipo String. Código único, irrepetible que identifica a la
-     * comsión.
      * @param titulo tipo String. Título identificativo de la comisión. Es
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión.
@@ -51,10 +50,11 @@ public class Tradicional extends Comision {
      * @param artist tipo String. Nombre del artista que ha realizado la comsión
      * u obra.
      */
-    public Tradicional(String tamano, int zonaEnvio, String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
-        super(codigo, titulo, descripcion, precioBase, NSFW, artist);
+    public Tradicional(String tamano, int zonaEnvio, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+        super(titulo, descripcion, precioBase, NSFW, artist);
         this.tamano = tamano;
         this.zonaEnvio = zonaEnvio;
+        this.codigo = this.getClass().getSimpleName() + numeroCreadas;
     }
 
     /**

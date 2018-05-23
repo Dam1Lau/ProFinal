@@ -23,6 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Clase que agrupa todas las funcionalidades relacioandas con la carga y
+ * grabado de datos en ficheros de diversa clase. Ficheros de datos y ficheros
+ * de texto. Las rutas o nombres de los ficheros están definidas como static
+ * final al comienzo de la clase.
  *
  * @author Laura
  */
@@ -32,6 +36,14 @@ public class UtilidadesFichero {
     private static final String datosClientes = "clientes.dat";
     private static final String datosPedidos = "factura.dat";
 
+    /**
+     * Método que graba los datos de las comisiones almacenadas en la plataforma
+     * en un fichero de datos.
+     *
+     * @param comisiones ArrayList compuesto de instancias de clase Comision.
+     * ArrayList con todas las comisiones que hay registradas en la plataforma
+     * en el momento del grabado de datos en el fichero.
+     */
     private void grabarComisiones(ArrayList<Comision> comisiones) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosComisiones)));
@@ -47,6 +59,14 @@ public class UtilidadesFichero {
 
     }
 
+    /**
+     * Método que graba los datos de los clientes almacenados en la plataforma
+     * en un fichero de datos.
+     *
+     * @param comisiones ArrayList compuesto de instancias de clase Cliente.
+     * ArrayList con todas los clientes que hay registradas en la plataforma en
+     * el momento del grabado de datos en el fichero.
+     */
     private void grabarClientes(TreeSet<Cliente> clientes) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosClientes)));
@@ -62,7 +82,15 @@ public class UtilidadesFichero {
         }
 
     }
-    
+
+    /**
+     * Método que graba los datos de los pedidos almacenadas en la plataforma en
+     * un fichero de datos.
+     *
+     * @param comisiones ArrayList compuesto de instancias de clase Pedido.
+     * ArrayList con todos los pedidos que hay registradas en la plataforma en
+     * el momento del grabado de datos en el fichero.
+     */
     private void grabarPedido(ArrayList<Pedido> pedidos) {
         try {
             ObjectOutputStream ou = new ObjectOutputStream(new FileOutputStream(new File(datosPedidos)));
@@ -78,6 +106,13 @@ public class UtilidadesFichero {
 
     }
 
+    /**
+     * Método que obtiene un ArrayList compuesto de de objetos de tipo Comision
+     * a partir de un fichero de datos para posteriormente cargaros en la
+     * plataforma y poder actuar sobre ellos.
+     *
+     * @return ArrayList compuesto de instancias de la clase Comision.
+     */
     private ArrayList<Comision> cargarComisiones() {
         ArrayList<Comision> aux = new ArrayList();
         boolean finalFichero = false;
@@ -103,6 +138,13 @@ public class UtilidadesFichero {
         return aux;
     }
 
+    /**
+     * Método que obtiene un ArrayList compuesto de de objetos de tipo Cliente a
+     * partir de un fichero de datos para posteriormente cargaros en la
+     * plataforma y poder actuar sobre ellos.
+     *
+     * @return ArrayList compuesto de instancias de la clase Cliente.
+     */
     private TreeSet<Comision> cargarClientes() {
         TreeSet<Comision> aux = new TreeSet();
         boolean finalFichero = false;
@@ -127,7 +169,14 @@ public class UtilidadesFichero {
 
         return aux;
     }
-    
+
+    /**
+     * Método que obtiene un ArrayList compuesto de de objetos de tipo Pedido
+     * a partir de un fichero de datos para posteriormente cargaros en la
+     * plataforma y poder actuar sobre ellos.
+     *
+     * @return ArrayList compuesto de instancias de la clase Pedido.
+     */
     private ArrayList<Pedido> cargarPedidos() {
         ArrayList<Pedido> aux = new ArrayList();
         boolean finalFichero = false;

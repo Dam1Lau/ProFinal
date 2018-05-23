@@ -16,18 +16,21 @@ import java.util.Objects;
  */
 public abstract class Comision implements Serializable {
 
-    private String codigo;
+    protected String codigo;
     private String titulo;
     private String descripcion;
     private int precioBase;
     private boolean NSFW;
     private String artist;
+    
+    public static int numeroCreadas;
 
     /**
      * Constructor vacio de la clase comision. Crea una instancia inicializando
      * los atributos de la clase al valor por defecto.
      */
     public Comision() {
+        numeroCreadas ++;
     }
 
     /**
@@ -35,8 +38,6 @@ public abstract class Comision implements Serializable {
      * la introducción de todos sus atributos a través de los parámetros de
      * entrada del constructor. Los parámetros necesarios son los siguientes:
      *
-     * @param codigo tipo String. Código único, irrepetible que identifica a la
-     * comsión.
      * @param titulo tipo String. Título identificativo de la comisión. Es
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión
@@ -50,8 +51,8 @@ public abstract class Comision implements Serializable {
      * @param artist tipo String. Nombre del artista que ha realizado la comsión
      * u obra.
      */
-    public Comision(String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
-        this.codigo = codigo;
+    public Comision(String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+        this();
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.precioBase = precioBase;

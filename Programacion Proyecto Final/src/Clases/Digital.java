@@ -22,6 +22,7 @@ public class Digital extends Comision {
      * los atributos de la clase al valor por defecto.
      */
     public Digital() {
+        this.codigo = this.getClass().getSimpleName() + numeroCreadas;
     }
 
     /**
@@ -33,8 +34,6 @@ public class Digital extends Comision {
      * será True, si no lo es, False.
      * @param conCorrecciones tipo boolean. Si el producto puede ser corregido
      * durante su creación el valor será True, en caso contrario False.
-     * @param codigo tipo String. Código único, irrepetible que identifica a la
-     * comsión.
      * @param titulo tipo String. Título identificativo de la comisión. Es
      * conveniente que contenga palabras descriptivas de la comisión.
      * @param descripcion tipo String. Descripción general de la comisión
@@ -49,10 +48,11 @@ public class Digital extends Comision {
      * @param artist tipo String. Nombre del artista que ha realizado la comsión
      * u obra.
      */
-    public Digital(boolean animado, boolean conCorrecciones, String codigo, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
-        super(codigo, titulo, descripcion, precioBase, NSFW, artist);
+    public Digital(boolean animado, boolean conCorrecciones, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+        super(titulo, descripcion, precioBase, NSFW, artist);
         this.animado = animado;
         this.conCorrecciones = conCorrecciones;
+        this.codigo = this.getClass().getSimpleName() + numeroCreadas;
     }
 
     /**

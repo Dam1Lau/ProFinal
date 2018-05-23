@@ -20,12 +20,16 @@ public class Pedido implements Serializable {
     private String idPedido;
     private String nicknameCliente;
     private String codigoComision;
+    
+    public static int numPedidosGenerados;
 
     /**
      * Constructor vacio de la clase Pedido. Crea una instancia inicializando
      * los atributos de la clase al valor por defecto.
      */
     public Pedido() {
+        numPedidosGenerados++;
+        this.idPedido = this.getClass().getSimpleName() + numPedidosGenerados;
     }
 
     /**
@@ -41,7 +45,7 @@ public class Pedido implements Serializable {
      * que ha adquirido el cliente y que genera el pedido.
      */
     public Pedido(String idPedido, String nicknameCliente, String codigoComision) {
-        this.idPedido = idPedido;
+        this();
         this.nicknameCliente = nicknameCliente;
         this.codigoComision = codigoComision;
     }

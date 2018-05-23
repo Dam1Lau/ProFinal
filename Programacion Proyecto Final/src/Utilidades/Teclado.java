@@ -68,9 +68,9 @@ public class Teclado {
     }
 
     /**
-     * Método que pide al usuario que responda si o no ante una pregunta que se le
-     * ha debido plantear anteriormente a la llamada del mismo y que retornará un
-     * booleando según la opción elegida.
+     * Método que pide al usuario que responda si o no ante una pregunta que se
+     * le ha debido plantear anteriormente a la llamada del mismo y que
+     * retornará un booleando según la opción elegida.
      *
      * @return boolean. True si elige 1(Si), false si elige 2(No).
      */
@@ -89,11 +89,20 @@ public class Teclado {
         return opcion;
     }
 
+    /**
+     * Método que realiza una serie de preguntas al usuario para crea una
+     * instancia de la clase Comisión. Pedirá todos los atributos que componen
+     * esa clase tales como título de la comisión, descripción, precio base,
+     * contenido NSFW, nombre del artista que la realiza y dependiendo de si es
+     * de subtipo Digital si es animada o no, si tiene correcciones o no; o si
+     * es Tradicional el tamaño del soporte a usar o la zona de envío que le
+     * corresponde.
+     *
+     * @return Objeto de la clase Comisión (subclase Tradicional o Digital).
+     */
     public static Comision crearComision() {
         Scanner lector = new Scanner(System.in);
         System.out.println("========== DATOS PARA CREAR UNA NUEVA COMISIÓN ============");
-        System.out.println("Código de la comisión:");
-        String cod = lector.nextLine();
         System.out.println("Título de la comisión:");
         String tit = lector.nextLine();
         System.out.println("Descripción del dibujo/producto:");
@@ -115,7 +124,7 @@ public class Teclado {
             boolean anim = pedirBoolean();
             System.out.println("¿Se enviarán los bocetos previos para hacer correcciones o solo el producto final?  1. Con correcciones   2. Solo el producto final.");
             boolean correc = pedirBoolean();
-            comi = new Digital(anim, correc, cod, tit, des, pre, nsfw, artist);
+            comi = new Digital(anim, correc, tit, des, pre, nsfw, artist);
         } else {
             System.out.println("Tamaño del papel o soporte a usar: (Grande, mediano, pequeño");
             String tamano = lector.nextLine();
@@ -124,7 +133,7 @@ public class Teclado {
             do {
                 zona = Teclado.pedirNumero();
             } while (zona != 1 && zona != 2);
-            comi = new Tradicional(tamano, zona, cod, tit, des, pre, nsfw, artist);
+            comi = new Tradicional(tamano, zona, tit, des, pre, nsfw, artist);
         }
         return comi;
     }

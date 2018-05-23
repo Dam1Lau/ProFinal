@@ -19,12 +19,14 @@ public class Cliente implements Serializable {
     private String nickname;
     private String email;
     private String password;
+    
 
     /**
      * Constructor vacio de la clase cliente. Crea una instancia inicializando
      * los atributos de la clase al valor por defecto.
      */
     public Cliente() {
+        
     }
 
     /**
