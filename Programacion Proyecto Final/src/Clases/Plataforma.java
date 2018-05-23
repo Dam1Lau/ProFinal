@@ -18,8 +18,21 @@ import java.util.TreeSet;
  */
 public class Plataforma {
 
+    /**
+     * ArrayList que contiene todas las instancias de tipo Comision que se han
+     * registrado en la plataforma.
+     */
     ArrayList<Comision> comisiones = new ArrayList();
+    /**
+     * TreeSet que contiene todas las instancias de tipo Cliente que se han
+     * registrado en la plataforma.
+     */
     TreeSet<Cliente> clientes = new TreeSet();
+
+    /**
+     * ArrayList que contiene todas las instancias de tipo Pedido que se han
+     * registrado en la plataforma.
+     */
     ArrayList<Pedido> pedidos = new ArrayList();
 
     /**
@@ -32,11 +45,15 @@ public class Plataforma {
         comisiones = Utilidades.UtilidadesFichero.cargarComisiones();
         pedidos = Utilidades.UtilidadesFichero.cargarPedidos();
 
-//        clientes.add(new Cliente("Fro", "fro@gmail.com", "1234"));
-//        clientes.add(new Cliente("Bak", "boom@gmail.com", "4567"));
-//        clientes.add(new Cliente("Dek", "Oneforall@gmail.com", "8888"));
-//        clientes.add(new Cliente("Och", "gravityfalls@gmail.com", "9999"));
-//        clientes.add(new Cliente("Todo", "chicken@gmail.com", "9876"));
+        clientes.add(new Cliente("Fro", "fro@gmail.com", "1234"));
+        clientes.add(new Cliente("Bak", "boom@gmail.com", "4567"));
+        clientes.add(new Cliente("Dek", "Oneforall@gmail.com", "8888"));
+        clientes.add(new Cliente("Och", "gravityfalls@gmail.com", "9999"));
+        clientes.add(new Cliente("Todo", "chicken@gmail.com", "9876"));
+        
+        comisiones.add(new Digital(false,false,"Retrato","Retrato hasta los hombros",20,false,"Juanita"));
+        comisiones.add(new Digital(true,false,"Avatar animado","Avatar animado guiñando ojos.",10,false,"Fulanito"));
+        comisiones.add(new Tradicional("Mediano",1,"Paisaje","Paisaje de cualquier lugar que soliciten.",50,false,"Pajares"));
     }
 
     /**
@@ -100,7 +117,7 @@ public class Plataforma {
 
     /**
      * Método que agrega al ArrayList de comisiones una nueva comisión creada y
-     * a su vez guarda en el fichero de bojetos los nuevos datos contenidos en
+     * a su vez guarda en el fichero de objetos los nuevos datos contenidos en
      * el ArrayList tras agregar la comisión.
      *
      * @param comi tipo Comision. Abreviatura de comision. Objeto de tipo
@@ -108,7 +125,20 @@ public class Plataforma {
      * la plataforma.
      */
     public void agregarComision(Comision comi) {
+        comisiones.add(comi);
+        Utilidades.UtilidadesFichero.grabarComisiones(comisiones);
+    }
 
+    /**
+     * Método que agrega al ArrayList de comisiones una nueva comisión creada
+     * dentro del método llamando a la Utilidad crear comisión del paquete
+     * utilidades, y de la clase Teclado. A su vez guarda en el fichero de
+     * objetos los nuevos datos contenidos en el ArrayList tras agregar la
+     * comisión.
+     */
+    public void crearAgregarComision() {
+        comisiones.add(Utilidades.Teclado.crearComision());
+        Utilidades.UtilidadesFichero.grabarComisiones(comisiones);
     }
 
     /**
@@ -116,11 +146,22 @@ public class Plataforma {
      * de comisiones que estan registradas en la plataforma y la elimina de
      * dicho ArrayList.
      *
-     * @param comision tipo String. Código identificador de la comisión a
+     * @param codigo tipo String. Código identificador de la comisión a
      * eliminar.
      */
-    public void quitarComision(Comision comision) {
-
+    public void quitarComision(String codigo) {
+        for (int i = 0; i < comisiones.size(); i++) {
+            if (comisiones.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Comisión encontrada. ¿Desea eliminarla?");
+                boolean confirmar = Utilidades.Teclado.pedirBoolean();
+                if (confirmar) {
+                    comisiones.remove(comisiones.get(i));
+                } else {
+                    System.out.println("No se ha eliminado la comisión.");
+                }
+            }
+        }
+        Utilidades.UtilidadesFichero.grabarComisiones(comisiones);
     }
 
     /**
@@ -132,7 +173,24 @@ public class Plataforma {
      * eliminar.
      */
     public void editarComision(String codigo) {
-
+        for (int i = 0; i < comisiones.size(); i++) {
+            if (comisiones.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Comisión encontrada. Datos a modificar:");
+                System.out.println("Introduce el título:");
+                comisiones.get(i).setTitulo(Utilidades.Teclado.pedirString());
+                System.out.println("Introduce la descripción:");
+                comisiones.get(i).setDescripcion(Utilidades.Teclado.pedirString());
+                System.out.println("Introduce el precio base:");
+                comisiones.get(i).setPrecioBase(Utilidades.Teclado.pedirPrecio());
+                System.out.println("¿La comision tiene contenido NSFW?");
+                comisiones.get(i).setNSFW(Utilidades.Teclado.pedirBoolean());
+                System.out.println("Introduce el nombre del artista que la realiza:");
+                comisiones.get(i).setArtist(Utilidades.Teclado.pedirString());
+            }
+            System.out.println("Cambios realizados:");
+            System.out.println(comisiones.get(i).toStringCompleto());
+        }
+        Utilidades.UtilidadesFichero.grabarComisiones(comisiones);
     }
 
     /**
@@ -147,6 +205,17 @@ public class Plataforma {
      */
     public Comision obtenerComision(String codigo) {
         Comision com = null;
+        boolean encontrado = false;
+        for (int i = 0; i < comisiones.size(); i++) {
+            if (comisiones.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                System.out.println("Comisión encontrada. ¿Desea eliminarla?");
+                com = comisiones.get(i);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se ha encontrado ninguna comisión con ese código.");
+        }
         return com;
     }
 
@@ -157,7 +226,8 @@ public class Plataforma {
      * @param clie Objeto de tipo Cliente.
      */
     public void agregarCliente(Cliente clie) {
-
+        clientes.add(clie);
+        Utilidades.UtilidadesFichero.grabarClientes(clientes);
     }
 
     /**

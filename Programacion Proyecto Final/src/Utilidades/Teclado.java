@@ -68,6 +68,18 @@ public class Teclado {
     }
 
     /**
+     * Método que pide un string al usuario por teclado sin realizar ningún tipo
+     * de comprobación acerca del texto introducido.
+     *
+     * @return String introducido por el usuario por teclado.
+     */
+    public static String pedirString() {
+        String frase;
+        Scanner lector = new Scanner(System.in);
+        return frase = lector.nextLine();
+    }
+
+    /**
      * Método que pide al usuario que responda si o no ante una pregunta que se
      * le ha debido plantear anteriormente a la llamada del mismo y que
      * retornará un booleando según la opción elegida.
