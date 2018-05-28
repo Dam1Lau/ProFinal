@@ -149,7 +149,7 @@ public class UtilidadesFichero {
         TreeSet<Cliente> aux = new TreeSet();
         boolean finalFichero = false;
         try {
-            ObjectInputStream ou = new ObjectInputStream(new FileInputStream(new File(datosComisiones)));
+            ObjectInputStream ou = new ObjectInputStream(new FileInputStream(new File(datosClientes)));
             try {
                 while (finalFichero == false) {
                     try {
@@ -181,7 +181,7 @@ public class UtilidadesFichero {
         ArrayList<Pedido> aux = new ArrayList();
         boolean finalFichero = false;
         try {
-            ObjectInputStream ou = new ObjectInputStream(new FileInputStream(new File(datosComisiones)));
+            ObjectInputStream ou = new ObjectInputStream(new FileInputStream(new File(datosPedidos)));
             try {
                 while (finalFichero == false) {
                     try {
@@ -201,5 +201,7 @@ public class UtilidadesFichero {
 
         return aux;
     }
+    
+   
 
 }

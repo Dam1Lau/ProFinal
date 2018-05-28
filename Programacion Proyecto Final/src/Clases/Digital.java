@@ -50,7 +50,7 @@ public class Digital extends Comision {
      * @param artist tipo String. Nombre del artista que ha realizado la comisión
      * u obra.
      */
-    public Digital(boolean animado, boolean conCorrecciones, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+    public Digital(String titulo, String descripcion, int precioBase, boolean NSFW, String artist,boolean animado, boolean conCorrecciones) {
         super(titulo, descripcion, precioBase, NSFW, artist);
         this.animado = animado;
         this.conCorrecciones = conCorrecciones;
@@ -149,12 +149,18 @@ public class Digital extends Comision {
      */
     @Override
     public String toStringCompleto() {
-        String esNSFW;
+        String esNSFW = "No";
+        String animado = "No";
+        String correc = "No";
         if (super.isNSFW()) {
             esNSFW = "Si";
-        } else {
-            esNSFW = "No";
         }
-        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Artista que dibuja: " + super.getArtist() + " Animación digital: " + this.animado + " Con correcciones en el proceso: " + this.conCorrecciones;
+        if(this.animado){
+            animado = "Si";
+        }
+        if(this.conCorrecciones){
+            correc = "Si";
+        }
+        return "Codigo comisión: " + super.getCodigo() + " |  Titulo: " + super.getTitulo() + " |  Descripcion: " + super.getDescripcion() + " |  Precio Base: " + super.getPrecioBase() + " |  NSFW: " + esNSFW + " |  Artista que dibuja: " + super.getArtist() + " | Animación digital: " + animado + " | Con correcciones en el proceso: " + correc;
     }
 }

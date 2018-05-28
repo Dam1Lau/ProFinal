@@ -1,7 +1,6 @@
 package Clases;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -14,7 +13,7 @@ import java.util.Objects;
  *
  * @author Laura
  */
-public abstract class Comision implements Serializable {
+public abstract class Comision implements Serializable{
 
     protected String codigo;
     private String titulo;
@@ -201,7 +200,7 @@ public abstract class Comision implements Serializable {
      */
     @Override
     public String toString() {
-        return codigo + ";" + titulo + ";" + descripcion + ";" + precioBase + ";=" + NSFW + ";" + artist.toString();
+        return codigo + ";" + titulo + ";" + descripcion + ";" + precioBase + ";=" + NSFW + ";" + artist;
     }
 
     /**

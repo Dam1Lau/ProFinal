@@ -5,8 +5,10 @@
  */
 package Utilidades;
 
+import Clases.Cliente;
 import Clases.Comision;
 import Clases.Digital;
+import Clases.Plataforma;
 import Clases.Tradicional;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -136,7 +138,7 @@ public class Teclado {
             boolean anim = pedirBoolean();
             System.out.println("¿Se enviarán los bocetos previos para hacer correcciones o solo el producto final?  1. Con correcciones   2. Solo el producto final.");
             boolean correc = pedirBoolean();
-            comi = new Digital(anim, correc, tit, des, pre, nsfw, artist);
+            comi = new Digital(tit, des, pre, nsfw, artist, anim, correc);
         } else {
             System.out.println("Tamaño del papel o soporte a usar: (Grande, mediano, pequeño");
             String tamano = lector.nextLine();
@@ -145,8 +147,143 @@ public class Teclado {
             do {
                 zona = Teclado.pedirNumero();
             } while (zona != 1 && zona != 2);
-            comi = new Tradicional(tamano, zona, tit, des, pre, nsfw, artist);
+            comi = new Tradicional(tit, des, pre, nsfw, artist, tamano, zona);
         }
         return comi;
+    }
+
+    public static Cliente crearCliente() {
+        Scanner lector = new Scanner(System.in);
+        Cliente newcliente;
+        System.out.println("Nuevos registro de cliente. Introduzca los siguientes valores:");
+        System.out.println("Introduce tu nombre o nickname: ");
+        String nick = lector.nextLine();
+        System.out.println("Introduce tu email de registro: ");
+        String mail = lector.nextLine();
+        System.out.println("Introduce tu contraseña: ");
+        String pas = lector.nextLine();
+        return newcliente = new Cliente(nick, mail, pas);
+    }
+
+    public static void menu() {
+        Plataforma plat = new Plataforma();
+        System.out.println("================= Bienvenid@ elige una opción =================");
+        int opcion;
+        do {
+            System.out.println("_________________________________________________________________________________________");
+            System.out.println(" 1. Registrarse como cliente. \n 2. Acceder como cliente. \n 3. Administrar. \n 4. SALIR y GUARDAR.");
+            Scanner lector = new Scanner(System.in);
+
+            do {
+                opcion = pedirNumero();
+            } while (opcion < 1 || opcion > 4);
+
+            switch (opcion) {
+                case 1:
+                    plat.agregarCliente(crearCliente());
+                    break;
+
+                case 2:
+                    System.out.println("Introduce tu nickname y contraseña:");
+                    String user = lector.nextLine();
+                    String pass = lector.nextLine();
+                    if (plat.obtenerCliente(user).getPassword().equalsIgnoreCase(pass)) {
+                        System.out.println("Bienvenid@ " + user);
+                        int opt = 0;
+                        do {
+                            System.out.println("___________________________________________________________________________________________________");
+                            System.out.println("Elige una opción: 1. Ver comisiones disponibles. 2. Ver mis pedidos. 3. Editar mi cuenta. 4. SALIR.");
+                            opt = pedirNumero();
+                            switch (opt) {
+                                case 1:
+                                    plat.listarComisiones();
+                                    break;
+                                case 2:
+                                    plat.listarPedidoNombre(user);
+                                    break;
+                                case 3:
+                                    plat.editarCliente(user);
+                                    break;
+                            }
+                        } while (opt != 4);
+
+                    } else {
+                        System.out.println("Usuario o contraseña incorrectos.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Introduce la contraseña de administrador: ");
+                    String adminpass = lector.nextLine();
+                    if (adminpass.equals("admin123")) {
+                        int opt;
+                        do {
+                            System.out.println("_____________________________________________________________________");
+                            System.out.println("1. Crear comisión 2. Quitar comisión 3. Editar comisión"
+                                    + "\n4. Agregar cliente 5. Quitar cliente 6. Editar cliente."
+                                    + "\n7. Quitar pedido 8. Listar Pedidos 9. Listar comisiones. 10. Listar clientes."
+                                    + "\n11. Calcular total ganado por ventas. 12. SALIR");
+                            opt = pedirNumero();
+                            switch (opt) {
+                                case 1:
+                                    plat.crearAgregarComision();
+                                    break;
+                                case 2:
+                                    System.out.println("Introduce el código de la comisión a eliminar:");
+                                    String cod = lector.nextLine();
+                                    plat.quitarComision(cod);
+                                    break;
+                                case 3:
+                                    System.out.println("Introduce el código de la comisión a editar:");
+                                    String codi = lector.nextLine();
+                                    plat.editarComision(codi);
+                                    break;
+                                case 4:
+                                    plat.agregarCliente(Utilidades.Teclado.crearCliente());
+                                    break;
+                                case 5:
+                                    System.out.println("Nombre/nickname del cliente a eliminar:");
+                                    String name = lector.nextLine();
+                                    plat.quitarCliente(name);
+                                    break;
+                                case 6:
+                                    System.out.println("Nombre/nickname del cliente a eliminar:");
+                                    String namee = lector.nextLine();
+                                    plat.editarCliente(namee);
+                                    break;
+                                case 7:
+                                    System.out.println("Introduce el código del pedido a eliminar: ");
+                                    String code = lector.nextLine();
+                                    plat.quitarPedido(code);
+                                    break;
+                                case 8:
+                                    plat.listarPedidos();
+                                    break;
+                                case 9:
+                                    plat.listarComisiones();
+                                    break;
+                                case 10:
+                                    plat.listarClientes();
+                                    break;
+                                case 11:
+                                    System.out.println("Total ganado al cobrar los pedidos registrados:");
+                                    System.out.println(plat.calcularTotalGanado() + " €");   
+                                    break;
+                            }
+
+                        } while (opt != 12);
+
+                    } else {
+                        System.out.println("Contraseña incorrecta.");
+                    }
+                    break;
+
+                case 4:
+                    plat.guardarDatos();
+                    System.out.println("Ha salido de la plataforma.");
+                    break;
+            }
+        } while (opcion != 4);
+
     }
 }

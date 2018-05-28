@@ -50,7 +50,7 @@ public class Tradicional extends Comision {
      * @param artist tipo String. Nombre del artista que ha realizado la comsión
      * u obra.
      */
-    public Tradicional(String tamano, int zonaEnvio, String titulo, String descripcion, int precioBase, boolean NSFW, String artist) {
+    public Tradicional(String titulo, String descripcion, int precioBase, boolean NSFW, String artist,String tamano, int zonaEnvio) {
         super(titulo, descripcion, precioBase, NSFW, artist);
         this.tamano = tamano;
         this.zonaEnvio = zonaEnvio;
@@ -159,6 +159,6 @@ public class Tradicional extends Comision {
         } else {
             esNSFW = "No";
         }
-        return "Codigo comisión: " + super.getCodigo() + ", titulo: " + super.getTitulo() + ", descripcion: " + super.getDescripcion() + ", Precio Base: " + super.getPrecioBase() + ", NSFW: " + esNSFW + ", Artista que dibuja: " + super.getArtist() + " Tamaño del papel: " + this.tamano + " Zona de envio número: " + this.zonaEnvio;
+        return "Codigo comisión: " + super.getCodigo() + " |  Titulo: " + super.getTitulo() + " |  Descripcion: " + super.getDescripcion() + " |  Precio Base: " + super.getPrecioBase() + " |  NSFW: " + esNSFW + " |  Artista que dibuja: " + super.getArtist() + " |  Tamaño del papel: " + this.tamano + " |  Zona de envio número: " + this.zonaEnvio;
     }
 }

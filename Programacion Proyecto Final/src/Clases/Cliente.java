@@ -14,12 +14,11 @@ import java.util.Objects;
  *
  * @author Laura
  */
-public class Cliente implements Serializable {
+public class Cliente implements Serializable, Comparable<Cliente> {
 
     private String nickname;
     private String email;
     private String password;
-    
 
     /**
      * Constructor vacío de la clase cliente. Crea una instancia inicializando
@@ -42,7 +41,7 @@ public class Cliente implements Serializable {
      * datos. Puede contener números y letras.
      */
     public Cliente(String nickname, String email, String password) {
-        this.nickname = nickname;  
+        this.nickname = nickname;
         this.email = email;
         this.password = password;
     }
@@ -73,8 +72,8 @@ public class Cliente implements Serializable {
      * Método utilizado para establecer el valor del atributo email de la clase
      * Cliente.
      *
-     * @param email correo electrónico del cliente, tipo String. Debe contener el formato correcto
-     * para un email (@ y dominio).
+     * @param email correo electrónico del cliente, tipo String. Debe contener
+     * el formato correcto para un email (@ y dominio).
      */
     public void setEmail(String email) {
         this.email = email;
@@ -95,8 +94,8 @@ public class Cliente implements Serializable {
      * Método utilizado para establecer el valor del atributo contraseña de la
      * clase Cliente.
      *
-     * @param password contraseña del cliente, tipo String. Puede contener números y
-     * letras.
+     * @param password contraseña del cliente, tipo String. Puede contener
+     * números y letras.
      */
     public void setPassword(String password) {
         this.password = password;
@@ -127,8 +126,8 @@ public class Cliente implements Serializable {
     /**
      * Método que genera un código hash para cada instancia de la clase Cliente.
      *
-     * @return número entero. Devuelve un número generado usando el atributo nickname de
-     * la clase Cliente.
+     * @return número entero. Devuelve un número generado usando el atributo
+     * nickname de la clase Cliente.
      */
     @Override
     public int hashCode() {
@@ -161,6 +160,12 @@ public class Cliente implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Cliente t) {
+        return this.nickname.compareToIgnoreCase(t.nickname);
+
     }
 
 }

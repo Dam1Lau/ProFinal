@@ -15,14 +15,12 @@ public class ProgramacionProyectoFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // CONTRASEÑA DE ADMINISTRADOR: admin123
+        Utilidades.Teclado.menu();
+       
         
         
-        
-        /*
-        En clientes o comisiones cada vez que se cree uno, podria ser su id por ejemplo
-        un tring al que añades un numero que va siendo diferente segun lo cambies.
-        */
     }
     
 }

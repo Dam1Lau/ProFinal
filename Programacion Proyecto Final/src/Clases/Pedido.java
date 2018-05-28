@@ -32,6 +32,7 @@ public class Pedido implements Serializable {
         this.idPedido = this.getClass().getSimpleName() + numPedidosGenerados;
     }
 
+
     /**
      * Constructor de la clase Pedido. Crea una instancia de la clase mediante
      * la introducción de todos sus atributos a través de los parámetros de
