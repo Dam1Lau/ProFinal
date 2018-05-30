@@ -11,7 +11,9 @@ import Clases.Digital;
 import Clases.Plataforma;
 import Clases.Tradicional;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Clase teclado con las utilidades necesarias para pedir al usuario una serie
@@ -192,7 +194,8 @@ public class Teclado {
                         int opt = 0;
                         do {
                             System.out.println("___________________________________________________________________________________________________");
-                            System.out.println("Elige una opción: 1. Ver comisiones disponibles. 2. Ver mis pedidos. 3. Editar mi cuenta. 4. SALIR.");
+                            System.out.println("Elige una opción: 1. Ver comisiones disponibles. 2. Ver mis pedidos. 3. Editar mi cuenta. "
+                                    + "4. Listar comisiones por precio final (de menor a mayor). 5. SALIR");
                             opt = pedirNumero();
                             switch (opt) {
                                 case 1:
@@ -204,8 +207,11 @@ public class Teclado {
                                 case 3:
                                     plat.editarCliente(user);
                                     break;
+                                case 4:
+                                    plat.listarPrecioAscendente();
+                                    break;
                             }
-                        } while (opt != 4);
+                        } while (opt != 5);
 
                     } else {
                         System.out.println("Usuario o contraseña incorrectos.");
@@ -222,7 +228,7 @@ public class Teclado {
                             System.out.println("1. Crear comisión 2. Quitar comisión 3. Editar comisión"
                                     + "\n4. Agregar cliente 5. Quitar cliente 6. Editar cliente."
                                     + "\n7. Quitar pedido 8. Listar Pedidos 9. Listar comisiones. 10. Listar clientes."
-                                    + "\n11. Calcular total ganado por ventas. 12. SALIR");
+                                    + "\n11. Calcular total ganado por ventas. 12. Gastos recientes de los clientes. 13. SALIR");
                             opt = pedirNumero();
                             switch (opt) {
                                 case 1:
@@ -267,11 +273,20 @@ public class Teclado {
                                     break;
                                 case 11:
                                     System.out.println("Total ganado al cobrar los pedidos registrados:");
-                                    System.out.println(plat.calcularTotalGanado() + " €");   
+                                    System.out.println(plat.calcularTotalGanado() + " €");
+                                    break;
+                                case 12:
+                                    Set keys = plat.mapa().keySet();
+                                    Iterator it = keys.iterator();
+                                    while (it.hasNext()) {
+                                        String key = (String) it.next();
+                                        Double value = plat.mapa().get(key);
+                                        System.out.println("Cliente " + key + " ha gastado recientemente " + value);
+                                    }
                                     break;
                             }
 
-                        } while (opt != 12);
+                        } while (opt != 13);
 
                     } else {
                         System.out.println("Contraseña incorrecta.");

@@ -5,9 +5,11 @@
  */
 package Clases;
 
+import Clases.Comparadores.comisionesPrecioTotal;
 import Utilidades.compararTitulo;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeSet;
@@ -63,7 +65,6 @@ public class Plataforma {
 //        pedidos.add(new Pedido("Pedido03", "Todo", "Tradicional3"));
 //        pedidos.add(new Pedido("Pedido04", "Baku", "Digital1"));
 //        pedidos.add(new Pedido("Pedido01", "Baku", "Digital1"));
-
     }
 
     /**
@@ -295,7 +296,7 @@ public class Plataforma {
                 encontrado = true;
             }
         }
-        
+
         if (!encontrado) {
             System.out.println("No se ha encontrado el cliente en el registro.");
         }
@@ -344,7 +345,7 @@ public class Plataforma {
     public void quitarPedido(String codigo) {
         if (pedidos.isEmpty()) {
             System.out.println("No hay pedidos registrados.");
-        }else{
+        } else {
             for (int i = 0; i < pedidos.size(); i++) {
                 if (pedidos.get(i).getidPedido().equalsIgnoreCase(codigo)) {
                     System.out.println("Pedido encontrado. ¿Desea eliminarlo?");
@@ -360,7 +361,6 @@ public class Plataforma {
             Utilidades.UtilidadesFichero.grabarPedido(pedidos);
         }
 
-        
     }
 
     /**
@@ -390,7 +390,7 @@ public class Plataforma {
                 System.out.println(pedidos.get(i).toStringCompleto());
             }
         }
-        
+
     }
 
     /**
@@ -433,6 +433,25 @@ public class Plataforma {
         if (!encontrada) {
             System.out.println("Ninguna comisión encontrada con precio menor o igual a " + precio + "€");
         }
+    }
+    
+    /**
+     * Listado de todas las comisiones por precio total final ordenados bajo el 
+     * criterio de comparación de precio final ascendente, y a igualdad de precio
+     * ordenar por titulo, alfabeticamente.
+     */
+    
+    public void listarPrecioAscendente(){
+        System.out.println("======= Listando comisiones por precio total de menor a mayor =======");
+        ArrayList<Comision> copia = new ArrayList(comisiones);
+        Collections.sort(copia, new comisionesPrecioTotal());
+        Iterator it = copia.iterator();
+        while(it.hasNext()){
+            Comision x= ((Comision)it.next());
+            System.out.println(x.toStringCompleto());
+            System.out.println("  -  Precio total: " + x.calcularPrecioTotal());
+        }
+    
     }
 
     /**
@@ -571,15 +590,26 @@ public class Plataforma {
         }
         return total;
     }
-    
-    public void guardarDatos(){
+
+    public void guardarDatos() {
         Utilidades.UtilidadesFichero.grabarClientes(clientes);
         Utilidades.UtilidadesFichero.grabarComisiones(comisiones);
         Utilidades.UtilidadesFichero.grabarPedido(pedidos);
     }
-    
-//    public void comprarComi(String nickCliente, String codiCom){
-//        pedidos.add(new Pedido(nickCliente,codiCom));
-//    }
+
+    public HashMap<String, Double> mapa() {
+        HashMap<String, Double> mapita = new HashMap();
+        for (int i = 0; i < pedidos.size(); i++) {
+            Double valor = null;
+            String id = pedidos.get(i).getCodigoComision();
+            for (int j = 0; j < comisiones.size(); j++) {
+                if(comisiones.get(j).getCodigo().equalsIgnoreCase(id)){
+                    valor = comisiones.get(j).calcularPrecioTotal();
+                }
+            }
+            mapita.put(pedidos.get(i).getNicknameCliente(), valor);
+        }
+        return mapita;
+    }
 
 }
